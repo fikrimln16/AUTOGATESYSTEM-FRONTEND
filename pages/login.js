@@ -89,7 +89,7 @@ export default function Login() {
                   alert("Gate is Open")
                   if(res.data.role === "security"){
                     router.push("/security/mask")
-                  }else{
+                  }else if(res.data.role === "datascientist"){
                     router.push("/admin/tables")
                   }
                 }else{
