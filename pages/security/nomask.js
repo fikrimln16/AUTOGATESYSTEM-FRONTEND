@@ -12,7 +12,7 @@ import Admin from "../../components/layout/layout";
 export default function Mask() {
     const [data,setData] = useState()
     useEffect(() => {
-        axios.get("https://autogatesystem.herokuapp.com/security/nomask")
+        axios.get("https://web-production-7522.up.railway.app/security/nomask")
         .then(data => setData(data.data))
         .catch(e => console.log(e))
     },[])

@@ -27,7 +27,7 @@ export default function Tables({data}) {
 
 export async function getServerSideProps(){
 
-  const res = await axios.get("https://autogatesystem.herokuapp.com/dataharian")
+  const res = await axios.get("https://web-production-7522.up.railway.app/dataharian")
   const data = res.data
 
   return {

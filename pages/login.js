@@ -83,7 +83,7 @@ export default function Login() {
             <form
               id="form1"
               onSubmit={handleSubmit(async (d) => {
-                const res = await axios.post("https://autogatesystem.herokuapp.com/users/login",{...d,masker:boolMask})
+                const res = await axios.post("https://web-production-7522.up.railway.app/users/login",{...d,masker:boolMask})
                 console.log(res.status)
                 if(boolMask){
                   alert("Gate is Open")

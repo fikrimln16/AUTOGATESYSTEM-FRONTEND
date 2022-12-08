@@ -12,7 +12,7 @@ import Admin from "../../components/layout/layout";
 export default function Mask() {
     const [data,setData] = useState()
     useEffect(() => {
-        axios.get("https://autogatesystem.herokuapp.com/security/withmask")
+        axios.get("https://web-production-7522.up.railway.app/security/withmask")
         .then(data => setData(data.data))
         .catch(e => console.log(e))
     },[])
