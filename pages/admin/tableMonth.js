@@ -21,7 +21,7 @@ export default function Tables({data}) {
   //   },[])
     useEffect(() => {
       if(dataMonth != ""){
-        axios.get("https://web-production-7522.up.railway.app/dataharian"+dataMonth[1]+"/"+dataMonth[0]+"/jumlah")
+        axios.get("https://web-production-808a.up.railway.app/dataharian"+dataMonth[1]+"/"+dataMonth[0]+"/jumlah")
         .then(data => setJumlahMonth(data.data[0].Jumlah))
         .catch(e => console.log(e))
       }
@@ -40,7 +40,7 @@ export default function Tables({data}) {
 
 export async function getServerSideProps(){
 
-  const res = await axios.get("https://web-production-4f47.up.railway.app/dataharian")
+  const res = await axios.get("https://web-production-808a.up.railway.app/dataharian")
   const data = res.data
 
   return {
