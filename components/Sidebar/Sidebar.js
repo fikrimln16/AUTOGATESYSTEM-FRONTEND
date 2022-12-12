@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { AiOutlineTable } from "react-icons/ai";
 import {CgLogOut} from "react-icons/cg"
+import {HiMenu} from 'react-icons/hi'
 
 export default function Sidebar({ role }) {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
@@ -19,7 +20,7 @@ export default function Sidebar({ role }) {
               type="button"
               onClick={() => setCollapseShow("bg-white m-2 py-3 px-6")}
             >
-              menu
+              <HiMenu />
             </button>
             {/* Brand */}
             <Link href="/">
@@ -41,7 +42,7 @@ export default function Sidebar({ role }) {
                   </div>
                   <div className="w-6/12 flex justify-end">
                     <button type="button" className="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent" onClick={() => setCollapseShow("hidden")}>
-                      menu
+                      <HiMenu />
                     </button>
                   </div>
                 </div>
@@ -82,7 +83,7 @@ export default function Sidebar({ role }) {
               <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
                 <li className="items-center">
                   <Link href="/login">
-                    <a className="text-black hover:text-black text-xs uppercase py-3 font-bold block flex items-center">
+                    <a className="text-black hover:text-black text-xs uppercase py-3 font-bold flex items-center">
                       <CgLogOut size={20} /> Logout
                     </a>
                   </Link>
@@ -95,6 +96,9 @@ export default function Sidebar({ role }) {
     );
   }
   return (
+    
+    // Security
+
     <>
       <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6  bg-[rgb(240, 255, 255)/0.56] backdrop-blur-[80px] ">
         <div className="md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto">
@@ -104,7 +108,7 @@ export default function Sidebar({ role }) {
             type="button"
             onClick={() => setCollapseShow("bg-white m-2 py-3 px-6")}
           >
-            menu
+            <HiMenu />
           </button>
           {/* Brand */}
           <Link href="/">
@@ -125,13 +129,13 @@ export default function Sidebar({ role }) {
                 </div>
                 <div className="w-6/12 flex justify-end">
                   <button type="button" className="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent" onClick={() => setCollapseShow("hidden")}>
-                    menu
+                    <HiMenu />
                   </button>
                 </div>
               </div>
             </div>
             {/* Form */}
-            <form className="mt-6 mb-4 md:hidden">
+            {/* <form className="mt-6 mb-4 md:hidden">
               <div className="mb-3 pt-0">
                 <input
                   type="text"
@@ -139,7 +143,7 @@ export default function Sidebar({ role }) {
                   className=" px-3 py-2 h-12 border border-solid  border-black placeholder-black text-black bg-white rounded text-base leading-snug shadow-none outline-none focus:outline-none w-full font-normal"
                 />
               </div>
-            </form>
+            </form> */}
 
             {/* Divider */}
             <hr className="my-4 md:min-w-full" />
@@ -174,7 +178,7 @@ export default function Sidebar({ role }) {
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="items-center">
                 <Link href="/login">
-                  <a className="text-black hover:text-black text-xs uppercase py-3 font-bold block flex items-center">
+                  <a className="text-black hover:text-black text-xs uppercase py-3 font-bold flex items-center">
                     <CgLogOut size={20
                     
                     } /> Logout

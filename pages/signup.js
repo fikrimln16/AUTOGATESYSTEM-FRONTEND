@@ -32,9 +32,11 @@ export default function SignUp() {
 
   const router = useRouter()
 
+  const transition = "hover:shadow hover:shadow-pmMedium transition duration-300"
+
   return (
     <div>
-    <div className=" flex items-center relative z-30 IoCaretBack cursor-pointer" onClick={() => router.push("/login")}>
+    <div className=" flex items-center absolute z-30 IoCaretBack cursor-pointer" onClick={() => router.push("/login")}>
       <IoCaretBack size={50}/>
       <p>Back To Login</p>
     </div>
@@ -44,8 +46,11 @@ export default function SignUp() {
           id="form1"
           onSubmit={handleSubmit((d) => {
             axios.post("https://web-production-808a.up.railway.app/users",d)
-                .then(data => router.push("/login"))
-
+                .then(data => {
+                    router.push("/login")
+                  }
+                )
+                .catch(err => alert('email sudah terdaftar'))
           })}
         >
           <div className="relative mb-[14px]">
@@ -166,7 +171,7 @@ export default function SignUp() {
             </div>
             <p className="text-red-900 text-xs">{errors.confirmpassword?.message}</p>
           </div>
-          <input type="submit" className=" rounded-[20px] border-solid w-full h-[40px] bg-[#2CD5D9] px-[34px] mb-[10px] text-white cursor-pointer" value={"Next"} />
+          <input type="submit" className={"rounded-[20px] border-solid w-full h-[40px] bg-pmLight px-[34px] mb-[10px] active:bg-pmMedium text-white cursor-pointer disabled:opacity-25 " + transition} value={"Login"}/>
         </form>
       </div>
     </section>

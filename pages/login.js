@@ -24,6 +24,7 @@ export default function Login() {
 
   const [result, setResult] = useState();
   const [boolMask, setBoolmask] = useState()
+  const [msg,setMsg] = useState()
 
   const router = useRouter()
 
@@ -57,8 +58,10 @@ export default function Login() {
         setResult(results[0].label);
         if(results[0].label === "Mask"){
           setBoolmask(true)
+          setDisabled(false)
         }else{
           setBoolmask(false)
+          setDisabled(false)
         }
       });
 
@@ -70,6 +73,9 @@ export default function Login() {
       }
     };
   },[]);
+
+  const transition = "hover:shadow hover:shadow-pmMedium transition duration-300"
+  const [disabled,setDisabled] = useState(true)
 
   return (
     <div className="">
@@ -84,24 +90,17 @@ export default function Login() {
               id="form1"
               onSubmit={handleSubmit(async (d) => {
                 const res = await axios.post("https://web-production-808a.up.railway.app/users/login",{...d,masker:boolMask})
-                console.log(res.status)
-                if(boolMask){
-                  if(res.data.role === "security"){
+                if(res.data.msg){
+                  setMsg(res.data.msg)
+                  alert("Akun tidak ada")
+                }else{
+                  if(boolMask){
+                    if(res.data.role === "security"){
                     router.push("/security/mask")
-                  }
-                  
-                  if(res.data.role === "datascientist"){
+                  }else if(res.data.role === "datascientist"){
                     router.push("/admin/tables")
                   }
-                  
-                  if(res.data.role === "user"){
-                    alert("Gate is Open!")
-                  }
-                  
-                  if(res.data.role === "Akun Tidak Ada"){
-                    alert("Akun tidak tersedia, silahkan masukkan kembali!")
-                  }
-
+                  alert("Gate is Open!")
                 }else{
                   if(res.data.role === "Akun Tidak Ada"){
                     alert("Akun tidak tersedia, silahkan masukkan kembali!")
@@ -110,15 +109,13 @@ export default function Login() {
                     alert("Anda Tidak dapat Masuk Silahkan Pakai Masker")
                   }
                 }
+              }
                 
-                
-                // console.log({masker:boolMask,...d});
-                // console.log(errors)
               })}
             >
-              <div className="relative mb-[14px]">
+               <div className="relative mb-[14px]">
                 <p className=" text-[12px] absolute -top-[10px] left-[26px] px-1 bg-white">Email</p>
-                <input {...register("email")} placeholder="Email" className=" rounded-[20px] border border-solid w-full h-[40px] border-[#6E7076] px-[34px] mb-[10px]" />
+                <input {...register("email")} placeholder="Email" className=" rounded-[20px] border border-solid w-full h-[40px] border-[#6E7076] px-[34px] mb-[10px] disabled:opacity-25" disabled={disabled} />
                 <div className=" absolute w-[31px] h-[31px] bg-[#DAFEFF] right-[2%] top-[5px] rounded-full grid place-content-center">
                   <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -131,7 +128,7 @@ export default function Login() {
               </div>
               <div className="relative mb-[14px]">
                 <p className=" text-[12px] absolute -top-[10px] left-[26px] px-1 bg-white">Password</p>
-                <input {...register("password")} type={'password'} placeholder="Password" className=" rounded-[20px] border border-solid w-full h-[40px] border-[#6E7076] px-[34px] mb-[10px]" />
+                <input {...register("password")} type={'password'} placeholder="Password" className=" rounded-[20px] border border-solid w-full h-[40px] border-[#6E7076] px-[34px] mb-[10px] disabled:opacity-25" disabled={disabled} />
                 <div className=" absolute w-[31px] h-[31px] bg-[#DAFEFF] right-[2%] top-[5px] rounded-full grid place-content-center">
                   <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -143,9 +140,9 @@ export default function Login() {
                 <p className="text-red-900 text-xs">{errors.password?.message}</p>
               </div>
               {/* <Link href={"/admin/tables"}> */}
-              <input type="submit" className=" rounded-[20px] border-solid w-full h-[40px] bg-[#2CD5D9] px-[34px] mb-[10px] text-white cursor-pointer" value={"Login"} />
+              <input type="submit" className={"rounded-[20px] border-solid w-full h-[40px] bg-pmLight px-[34px] mb-[10px] active:bg-pmMedium text-white cursor-pointer disabled:opacity-25 " + transition} value={"Login"} disabled={disabled}/>
               {/* </Link> */}
-              <Link href={"/signup"} ><p className="border border-[#2CD5D9] rounded-[20px] border-solid w-full h-[40px] bg-white px-[34px] mb-[10px] text-white grid place-content-center text-[#2CD5D9] cursor-pointer select-none">SignUp</p></Link>
+              <Link href={"/signup"} ><p className="border border-[#2CD5D9] rounded-[20px] border-solid w-full h-[40px] bg-white px-[34px] mb-[10px] text-pmMedium grid place-content-center cursor-pointer select-none hover:text-white hover:bg-pmMedium duration-300 transition">SignUp</p></Link>
             </form>
           </div>
       </section>

@@ -6,6 +6,7 @@ export default function CardTableAdmin({data,typeMonth, dataMonth}) {
   const select = useRef();
   const [selectValue, setSelectValue] = useState("");
   const [date, setDate] = useState("")
+  const [dataExcel,setDataExcel] = useState(data)
 
   return (
     <>
@@ -14,16 +15,20 @@ export default function CardTableAdmin({data,typeMonth, dataMonth}) {
           <div className="flex flex-wrap items-center justify-between">
             <h3 className={"font-semibold text-lg "}>User Tables</h3>
             <div>
-              {!typeMonth && <input type="date" name="date" id="" onChange={e => setDate(e.target.value)}  />}
+              {!typeMonth && <input type="date" name="date" id="" onChange={e => setDate(e.target.value)} className="border border-white rounded-md bg-scLight text-white py-1 px-2" />}
               {typeMonth && <input type="month" name="month" id="" onChange={e => {setDate(e.target.value)
-                dataMonth(e.target.value.split("-"))}}  />}
-              <select ref={select} name="" id="" defaultValue={""} onChange={(e) => setSelectValue(e.target.value)}>
+                dataMonth(e.target.value.split("-"))}} className="border border-white rounded-md bg-scLight text-white p-1" />}
+              <select ref={select} name="" id="" defaultValue={""} onChange={(e) => setSelectValue(e.target.value)} className="border border-white rounded-md bg-scLight text-white p-1 ml-4">
                 <option value="">All</option>
                 <option value="5">5</option>
                 <option value="10">10</option>
                 <option value="15">15</option>
               </select>
-              <ExportExcel excelData={data} fileName={"exportExcel"} />
+              <ExportExcel excelData={dataExcel && typeMonth ?dataExcel
+                .filter((data) => date === ""?data:data.input_at.slice(0,7) === date)
+                .slice(...(selectValue == "" ? [0,undefined] : [0,selectValue])):data
+                .filter((data) => date === ""?data:data.input_at.slice(0,10) === date)
+                .slice(...(selectValue == "" ?[0,undefined] : [0,selectValue]))} fileName={"exportExcel"} />
             </div>
           </div>
         </div>
@@ -42,7 +47,7 @@ export default function CardTableAdmin({data,typeMonth, dataMonth}) {
             <tbody>
               {data && !typeMonth && data
                 .filter((data) => date === ""?data:data.input_at.slice(0,10) === date)
-                .slice(0, selectValue == "" ? undefined : selectValue)
+                .slice(...(selectValue == "" ?[0,undefined] : [0,selectValue]))
                 .map((data, index) => {
                   return (
                     <tr key={index}>
@@ -56,7 +61,7 @@ export default function CardTableAdmin({data,typeMonth, dataMonth}) {
                 })}
               {data && typeMonth && data
                 .filter((data) => date === ""?data:data.input_at.slice(0,7) === date)
-                .slice(0, selectValue == "" ? undefined : selectValue)
+                .slice(...(selectValue == "" ? [0,undefined] : [0,selectValue]))
                 .map((data, index) => {
                   return (
                     <tr key={index}>
