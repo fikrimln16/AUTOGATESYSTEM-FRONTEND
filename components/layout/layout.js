@@ -16,7 +16,7 @@ export default function Admin({ children, role,allUser, jumlahMonth, cardMonth }
     useEffect(() => {
       const getData = async () => {
         const res = await Promise.all([
-          axios.get(`hhttps://web-production-808a.up.railway.app/security/withmask/jumlah/${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`),
+          axios.get(`https://web-production-808a.up.railway.app/security/withmask/jumlah/${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`),
           axios.get(`https://web-production-808a.up.railway.app/security/nomask/jumlah/${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`)
         ])
         setJumlah(res[0].data[0].Jumlah)
