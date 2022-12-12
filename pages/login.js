@@ -88,13 +88,20 @@ export default function Login() {
                 if(boolMask){
                   if(res.data.role === "security"){
                     router.push("/security/mask")
-                  }else if(res.data.role === "datascientist"){
+                  }
+                  
+                  if(res.data.role === "datascientist"){
                     router.push("/admin/tables")
-                  }else if(res.data.role === "user"){
+                  }
+                  
+                  if(res.data.role === "user"){
                     alert("Gate is Open!")
-                  } else if(res.data.role === "Akun Tidak Ada"){
+                  }
+                  
+                  if(res.data.role === "Akun Tidak Ada"){
                     alert("Akun tidak tersedia, silahkan masukkan kembali!")
                   }
+
                 }else{
                   if(res.data.role === "Akun Tidak Ada"){
                     alert("Akun tidak tersedia, silahkan masukkan kembali!")
