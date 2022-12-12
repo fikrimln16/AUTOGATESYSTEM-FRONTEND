@@ -92,10 +92,11 @@ export default function Login() {
                   }else if(res.data.role === "datascientist"){
                     router.push("/admin/tables")
                   }else if(res.data.role === "Akun Tidak Ada"){
-                    alert("Akun tidak tersedia, silahkan coba lagi!")
+                    alert("Akun tidak tersedia, silahkan masukkan kembali!")
+                  }
                 }else{
                   if(res.data.role === "Akun Tidak Ada"){
-                    alert("Akun tidak tersedia, silahkan coba lagi!")
+                    alert("Akun tidak tersedia, silahkan masukkan kembali!")
                   } else {
                     router.push("/login")
                     alert("Anda Tidak dapat Masuk Silahkan Pakai Masker")
