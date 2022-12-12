@@ -86,7 +86,6 @@ export default function Login() {
                 const res = await axios.post("https://web-production-808a.up.railway.app/users/login",{...d,masker:boolMask})
                 console.log(res.status)
                 if(boolMask){
-                  alert("Gate is Open")
                   if(res.data.role === "security"){
                     router.push("/security/mask")
                   }else if(res.data.role === "datascientist"){
@@ -94,6 +93,7 @@ export default function Login() {
                   }else if(res.data.role === "Akun Tidak Ada"){
                     alert("Akun tidak tersedia, silahkan masukkan kembali!")
                   }
+                  alert("Gate is Open")
                 }else{
                   if(res.data.role === "Akun Tidak Ada"){
                     alert("Akun tidak tersedia, silahkan masukkan kembali!")
