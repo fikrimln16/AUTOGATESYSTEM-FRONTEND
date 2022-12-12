@@ -92,10 +92,9 @@ export default function Login() {
                     router.push("/admin/tables")
                   }else if(res.data.role === "user"){
                     alert("Gate is Open!")
-                  } else {
+                  } else if(res.data.role === "Akun Tidak Ada"){
                     alert("Akun tidak tersedia, silahkan masukkan kembali!")
                   }
-                  alert("Gate is Open!")
                 }else{
                   if(res.data.role === "Akun Tidak Ada"){
                     alert("Akun tidak tersedia, silahkan masukkan kembali!")
