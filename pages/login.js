@@ -13,7 +13,7 @@ export default function Login() {
   const schema = yup
     .object()
     .shape({
-      email: yup.string().email("email tidak valid").required("email harus diisi").matches('/^[a-z0-9](\.?[a-z0-9]){5,}@gmail\.com$/i','format email harus benar'),
+      email: yup.string().email("email tidak valid").required("email harus diisi").matches('/^[a-z0-9](\.?[a-z0-9]){5,}@gmail\.com$','format email harus benar'),
       password: yup.string().required('Please Enter your password')
       .matches(
         "^(?=.*[A-Za-z])(?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]{8,}$",// 8 karakter satu kapital satu lowercase dan spesial karakter
