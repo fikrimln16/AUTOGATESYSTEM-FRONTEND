@@ -10,15 +10,19 @@ export default function SignUp() {
   const schema = yup
     .object()
     .shape({
-      namabelakang: yup.string().required(),
-      namadepan: yup.string().required("Please Insert"),
-      nomor_telepon: yup.string().required("Please Insert").nullable(),
+      namabelakang: yup.string().required("Firstname is required"),
+      namadepan: yup.string().required("Lastname is required"),
+      nomor_telepon: yup.string().required("Number is required").nullable(),
       gender: yup.bool().oneOf([true,false],null).required("Please Choose One").nullable(),
       birthdate: yup.string().required(),
-      email: yup.string().email().required(),
-      password: yup.string().min(4).max(15).required(),
-      confirmpassword: yup.string().oneOf([yup.ref("password")],"harus sama").required(),
-      username: yup.string().required(),
+      email: yup.string().email("Email Invalid").required("Email is required").matches(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@gmail\.com$/,'Format email invalid'),
+      password: yup.string().required('Please Enter your password')
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,// 8 karakter satu kapital satu lowercase dan spesial karakter
+        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+      ),
+      confirmpassword: yup.string().oneOf([yup.ref("password")],"Password does not match").required("Password is required"),
+      username: yup.string().required("Username is required"),
     })
     .required();
 
