@@ -6,7 +6,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <title>Autogate Mask Detection</title>
-        <link rel="shortcut icon" href="mask.png" type="image/x-icon" />
+        <link rel="shortcut icon" href="mask.jpg" type="image/x-icon" />
       </Head>
       <Component {...pageProps} />
     </>
