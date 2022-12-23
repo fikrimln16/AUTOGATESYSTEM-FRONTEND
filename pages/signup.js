@@ -113,7 +113,7 @@ export default function SignUp() {
           </div>
           <div className="relative mb-[14px]">
             <p className=" text-[12px] absolute -top-[10px] left-[26px] px-1 bg-white">Phone Number</p>
-            <input {...register("nomor_telepon")} placeholder="+62-832-2143-2990" className=" rounded-[20px] border border-solid w-full h-[40px] border-[#6E7076] px-[34px] mb-[10px]" />
+            <input {...register("nomor_telepon")} placeholder="083225465559" className=" rounded-[20px] border border-solid w-full h-[40px] border-[#6E7076] px-[34px] mb-[10px]" />
             <div className=" absolute w-[31px] h-[31px] bg-[#DAFEFF] right-[2%] top-[5px] rounded-full grid place-content-center">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
