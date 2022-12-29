@@ -27,7 +27,7 @@ export default function CardStats({
               </div>
             </div>
           </div>
-          <p className="text-sm text-blueGray-400 mt-4">Today</p>
+          {statDate && <p className="text-sm text-blueGray-400 mt-4">Today</p>}
         </div>
       </div>
     </>

@@ -18,7 +18,7 @@ export default function CardTableAdmin({data,typeMonth, dataMonth}) {
               {!typeMonth && <input type="date" name="date" id="" onChange={e => setDate(e.target.value)} className="border border-white rounded-md bg-scLight text-white py-1 px-2" />}
               {typeMonth && <input type="month" name="month" id="" onChange={e => {setDate(e.target.value)
                 dataMonth(e.target.value.split("-"))}} className="border border-white rounded-md bg-scLight text-white p-1" />}
-              <select ref={select} name="" id="" defaultValue={""} onChange={(e) => setSelectValue(e.target.value)} className="border border-white rounded-md bg-scLight text-white p-1 ml-4">
+              <select ref={select} name="" id="" defaultValue={""} onChange={(e) => setSelectValue(e.target.value)} className="border border-white rounded-md bg-scLight text-white p-1 mx-4">
                 <option value="">All</option>
                 <option value="5">5</option>
                 <option value="10">10</option>
