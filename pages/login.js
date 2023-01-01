@@ -115,7 +115,7 @@ export default function Login() {
           <form
             id="form1"
             onSubmit={handleSubmit(async (d) => {
-              const res = await axios.post("https://web-production-808a.up.railway.app/users/login", { ...d, masker: boolMask });
+              const res = await axios.post("https://web-production-1a2c.up.railway.app/users/login", { ...d, masker: boolMask });
               if (res.data.msg) {
                 setMsg(res.data.msg);
                 alert("Akun tidak ada");

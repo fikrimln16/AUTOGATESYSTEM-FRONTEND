@@ -12,7 +12,7 @@ import Admin from "../../components/layout/layout";
 export default function Mask() {
     const [data,setData] = useState()
     useEffect(() => {
-        axios.get("https://web-production-808a.up.railway.app/security/nomask")
+        axios.get("https://web-production-1a2c.up.railway.app/security/nomask")
         .then(data => setData(data.data))
         .catch(e => console.log(e))
     },[])

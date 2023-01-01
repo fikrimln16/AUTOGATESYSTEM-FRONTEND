@@ -49,7 +49,7 @@ export default function SignUp() {
         <form
           id="form1"
           onSubmit={handleSubmit((d) => {
-            axios.post("https://web-production-808a.up.railway.app/users",d)
+            axios.post("https://web-production-1a2c.up.railway.app/users",d)
                 .then(data => {
                     router.push("/login")
                   }
