@@ -118,7 +118,7 @@ export default function Login() {
               const res = await axios.post("https://web-production-1a2c.up.railway.app/users/login", { ...d, masker: boolMask });
               if (res.data.msg) {
                 setMsg(res.data.msg);
-                alert("Akun tidak ada");
+                alert("Pastikan memasukkan email dan password");
               } else {
                 if (boolMask) {
                   if (res.data.role === "security") {
