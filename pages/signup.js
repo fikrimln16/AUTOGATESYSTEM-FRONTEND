@@ -175,7 +175,7 @@ export default function SignUp() {
             </div>
             <p className="text-red-900 text-xs">{errors.confirmpassword?.message}</p>
           </div>
-          <input type="submit" className={"rounded-[20px] border-solid w-full h-[40px] bg-pmLight px-[34px] mb-[10px] active:bg-pmMedium text-white cursor-pointer disabled:opacity-25 " + transition} value={"Login"}/>
+          <input type="submit" className={"rounded-[20px] border-solid w-full h-[40px] bg-pmLight px-[34px] mb-[10px] active:bg-pmMedium text-white cursor-pointer disabled:opacity-25 " + transition} value={"Submit"}/>
         </form>
       </div>
     </section>
